@@ -1,0 +1,195 @@
+
+<html>
+	<head>
+		<title>Chibbledome Controller</title>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Archivo+Black' rel='stylesheet' type='text/css'>
+		
+		<script type='text/javascript'>
+			
+			var ac_state = false;
+			
+			$(document).ready(function(){
+				if ('ontouchend' in document.documentElement) {
+					$("#on").bind("touchend",function(){
+						this.style.backgroundColor = "rgba(0,128,0,.75)";
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,128,0,.5)";
+						}.bind(this), 100);
+						$.ajax("/on");
+					});	
+					
+					$("#off").bind("touchend",function(){
+						this.style.backgroundColor = "rgba(128,0,0,.75)";
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(128,0,0,.5)";
+						}.bind(this), 100);
+						$.ajax("/off");
+					});		
+					$("#ac").bind("touchend", function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";
+						if (ac_state){
+							this.innerHTML = "Off";				
+						}
+						else {
+							this.innerHTML = "On";
+						}
+						ac_state = !ac_state;
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						$.ajax("/ac");			
+					});
+					$("#ac_up").bind("touchend", function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";						
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						$.ajax("/ac_up");			
+					});
+					$("#ac_down").bind("touchend", function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";					
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						$.ajax("/ac_down");			
+					});
+					$("#ac_fan").bind("touchend", function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";						
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						$.ajax("/ac_fan");			
+					});
+					$("#ac_mode").bind("touchend", function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";					
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						$.ajax("/ac_mode");			
+					});
+					$("#check").bind("touchend", function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";					
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						if ($("#webcam").length > 0) document.body.removeChild($("#webcam")[0]);
+						var img = document.createElement("img");
+						img.src = "/webcam";
+						img.id = "webcam";
+						document.body.appendChild(img);
+						$(img).click(function(){this.parentNode.removeChild(this);});
+					});
+				}	
+				else {
+					$("#on").click(function(){
+						this.style.backgroundColor = "rgba(0,128,0,.75)";
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,128,0,.5)";
+						}.bind(this), 100);
+						$.ajax("/on");
+					});	
+					
+					$("#off").click(function(){
+						this.style.backgroundColor = "rgba(128,0,0,.75)";
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(128,0,0,.5)";
+						}.bind(this), 100);
+						$.ajax("/off");
+					});
+					$("#ac").click(function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";
+						if (ac_state){
+							this.innerHTML = "Off";				
+						}
+						else {
+							this.innerHTML = "On";
+						}
+						ac_state = !ac_state;
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						$.ajax("/ac");			
+					});
+					$("#ac_up").click(function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";						
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						$.ajax("/ac_up");			
+					});
+					$("#ac_down").click(function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";					
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						$.ajax("/ac_down");			
+					});
+					$("#ac_fan").click(function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";						
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						$.ajax("/ac_fan");			
+					});
+					$("#ac_mode").click(function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";					
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						$.ajax("/ac_mode");			
+					});
+					$("#check").click(function(){
+						this.style.backgroundColor = "rgba(0,0,128,.75)";					
+						setTimeout(function(){
+							this.style.backgroundColor = "rgba(0,0,128,.5)";
+						}.bind(this), 100);
+						if ($("#webcam").length > 0) document.body.removeChild($("#webcam")[0]);
+						var img = document.createElement("img");
+						img.src = "/webcam";
+						img.id = "webcam";
+						document.body.appendChild(img);
+						$(img).click(function(){this.parentNode.removeChild(this);});
+					});
+				}
+				
+			});
+		</script>
+		
+		<style type='text/css'>
+			.big_button {
+			height:100px; width: 200px; border-radius: 8px; color: white; text-align:center; line-height: 100px; font-size: 3.5em; margin: 0 auto 20px auto;  
+			}
+			.little_button {
+			height:100px; width: 100px; border-radius: 8px; color: white; text-align:center; line-height: 100px; font-size: 3.5em; margin: 0 auto 20px auto;  
+			}
+		</style>
+		
+	</head>
+	<body style="text-align: center; font-family: 'Archivo Black', sans-serif;">
+		LED
+		<div class="big_button" id="on" style='background-color: rgba(0,128,0,0.5); -webkit-tap-highlight-color: rgba(0,0,0,0);'>On</div>		
+		<div class="big_button" id="off" style='background-color: rgba(128,0,0,0.5); -webkit-tap-highlight-color: rgba(0,0,0,0);'>Off</div>
+		AC
+		<div class="big_button" id="ac" style='background-color: rgba(0,0,128,0.5); -webkit-tap-highlight-color: rgba(0,0,0,0);'>Off</div>
+		<span class="little_button" id="ac_up" style='display:inline-block; background-color: rgba(0,0,128,0.5); -webkit-tap-highlight-color: rgba(0,0,0,0);'>
+			&#x25B2;
+		</span>
+		<span class="little_button" id="ac_down" style='display:inline-block; background-color: rgba(0,0,128,0.5); -webkit-tap-highlight-color: rgba(0,0,0,0);'>
+			&#x25BC;
+		</span><br/>
+		<span class="little_button" id="ac_fan" style='display:inline-block; background-color: rgba(0,0,128,0.5); -webkit-tap-highlight-color: rgba(0,0,0,0); font-size: 2em;'>
+			Fan
+		</span>
+		<span class="little_button" id="ac_mode" style='display:inline-block; background-color: rgba(0,0,128,0.5); -webkit-tap-highlight-color: rgba(0,0,0,0); font-size: 2em;'>
+			Mode
+		</span><br/>
+		<span class="little_button" id="check" style='display:inline-block; background-color: rgba(0,0,128,0.5); -webkit-tap-highlight-color: rgba(0,0,0,0); font-size: 1.5em;'>
+			Check
+		</span><br/>
+	</div>
+	<span id="touchevent"></span>
+</body>
+</html>
+
