@@ -1,0 +1,8 @@
+<html>
+<head>
+<title>Get more overlords</title>
+</head>
+<body>
+<a href='javascript:(function(){if(window.overlords===undefined)window.overlords=[];var overlord=document.createElement("img");overlord.src="http://dl.dropbox.com/u/20851214/overlord.png";overlord.style.position="fixed";overlord.style.top=((Math.random()*(window.innerHeight-100)+1))+"px";overlord.style.left="0px";window.overlords.push(overlord);document.body.appendChild(overlord);function drift(){for(i=0;i<overlords.length;i++){var ovie=overlords[i];ovie.style.left=(parseInt(ovie.style.left)+10)+"px";if(parseInt(ovie.style.left)>window.innerWidth)overlords.splice(i,1);}setTimeout(drift,100);}if(window.drifting===undefined){window.drifting=true;drift();}})()'>Spawn Overlords</a>
+</body>
+</html>
